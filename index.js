@@ -6,7 +6,12 @@ async function testGetResponse() {
   console.log(msg);
 }
 
-async function getResponse(question) {
+async function getResponse(question, courseName) {
+  const courseMap = {
+    "COP 2273 - Spring 2025": "523756",
+    "COP2273 - Fall 2024": "506849",
+    "CAP5771 - Intro to Data Science": "529762",
+  };
   return await fetch(`https://latte.rc.ufl.edu/ask`, {
     method: "POST",
     mode: "cors",
@@ -15,7 +20,8 @@ async function getResponse(question) {
       Accept: "application/json",
     },
     body: JSON.stringify({
-      course_id: "506849",
+      // course_id: "506849",
+      course_id: courseMap[courseName],
       message: question,
     }),
   });
@@ -66,7 +72,12 @@ async function runCodio(codioIDE, window) {
         content: user_input,
       });
 
-      const response = await getResponse(user_input);
+      const codioContext = await codioIDE.coachBot.getContext();
+      // console.log(codioContext.assignmentData.courseName)
+      const response = await getResponse(
+        user_input,
+        codioContext.assignmentData.courseName
+      );
       const json = await response.json();
       const msg = json.response;
 
