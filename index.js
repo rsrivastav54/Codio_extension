@@ -33,6 +33,7 @@ async function getCodeQuestionResponse(question, codioContext) {
     "COP2273 - Fall 2024": "506849",
     "CAP5771 - Intro to Data Science": "529762",
   };
+  courseName = codioContext.assignmentData.courseName;
   return await fetch(`https://latte.rc.ufl.edu/ask-code`, {
     method: "POST",
     mode: "cors",
