@@ -28,6 +28,11 @@ async function getResponse(question, courseName) {
 }
 
 async function getCodeQuestionResponse(question, codioContext) {
+  const courseMap = {
+    "COP 2273 - Spring 2025": "523756",
+    "COP2273 - Fall 2024": "506849",
+    "CAP5771 - Intro to Data Science": "529762",
+  };
   return await fetch(`https://latte.rc.ufl.edu/ask-code`, {
     method: "POST",
     mode: "cors",
@@ -37,6 +42,7 @@ async function getCodeQuestionResponse(question, codioContext) {
     },
     body: JSON.stringify({
       message: question,
+      course_id: courseMap[courseName],
       codio_context: codioContext,
     }),
   });
