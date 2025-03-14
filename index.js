@@ -6,7 +6,7 @@ async function testGetResponse() {
   console.log(msg);
 }
 
-async function getResponse(question, courseName) {
+async function getResponse(question, courseName, codioContext) {
   const courseMap = {
     "COP 2273 - Spring 2025": "523756",
     "COP2273 - Fall 2024": "506849",
@@ -23,6 +23,7 @@ async function getResponse(question, courseName) {
       // course_id: "506849",
       course_id: courseMap[courseName],
       message: question,
+      codio_context: codioContext
     }),
   });
 }
@@ -83,7 +84,8 @@ async function runCodio(codioIDE, window) {
       // console.log(codioContext.assignmentData.courseName)
       const response = await getResponse(
         user_input,
-        codioContext.assignmentData.courseName
+        codioContext.assignmentData.courseName,
+        codioContext
       );
       const json = await response.json();
       const msg = json.response;
