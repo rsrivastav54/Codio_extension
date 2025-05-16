@@ -11,6 +11,8 @@ async function getResponse(question, courseName, codioContext) {
     "COP 2273 - Spring 2025": "523756",
     "COP2273 - Fall 2024": "506849",
     "CAP5771 - Intro to Data Science": "529762",
+    "Testing course 2": "987654",
+    "Testing course": "876543",
   };
   return await fetch(`https://latte.rc.ufl.edu/ask`, {
     method: "POST",
@@ -33,6 +35,8 @@ async function getCodeQuestionResponse(question, codioContext) {
     "COP 2273 - Spring 2025": "523756",
     "COP2273 - Fall 2024": "506849",
     "CAP5771 - Intro to Data Science": "529762",
+    "Testing course 2": "987654",
+    "Testing course": "876543",
   };
   courseName = codioContext.assignmentData.courseName;
   return await fetch(`https://latte.rc.ufl.edu/ask-code`, {
