@@ -55,11 +55,11 @@ async function getCodeQuestionResponse(question, codioContext) {
 }
 
 async function runCodio(codioIDE, window) {
-  codioIDE.coachBot.register(
+  /* codioIDE.coachBot.register(
     "LogisticsQuestionButton",
     "I have a logistics question",
     onLogisticsQuestion
-  );
+  ); */
   codioIDE.coachBot.register(
     "CodioQuestion",
     "I have a code question",
@@ -68,6 +68,9 @@ async function runCodio(codioIDE, window) {
 
   async function onLogisticsQuestion() {
     let messages = [];
+
+    codioIDE.coachBot.write("This Codiobot is an experimental feature and may make mistakes. Please double-check its responses.");
+
 
     codioIDE.coachBot.write(
       "Ask your question in the text input below, or type 'Quit' to quit"
@@ -113,6 +116,9 @@ async function runCodio(codioIDE, window) {
 
   async function onCodeQuestion() {
     let messages = [];
+
+    codioIDE.coachBot.write("This Codiobot is an experimental feature and may make mistakes. Please double-check its responses.");
+
 
     codioIDE.coachBot.write(
       "Ask your question in the text input below, or type 'Quit' to quit"
